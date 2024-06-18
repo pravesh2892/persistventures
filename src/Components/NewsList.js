@@ -1,14 +1,27 @@
 import React from "react";
-
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addFavorite, removeFavorite } from "../utils/favoritesSlice";
 
 function NewsList({ handlePageChange }) {
   const { articles, page, totalResults, isLoading, error } = useSelector(
     (state) => state.news
   );
+  const { favoriteArticles } = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
 
   const totalPages = Math.ceil(totalResults / 10);
+
+  const handleFavoriteToggle = (article) => {
+    const isAlreadyFavorite = favoriteArticles.some(
+      (fav) => fav.url === article.url
+    );
+    if (isAlreadyFavorite) {
+      dispatch(removeFavorite(article.url));
+    } else {
+      dispatch(addFavorite(article));
+    }
+  };
 
   if (isLoading) {
     return <div className="loading">Loading...</div>;
@@ -28,6 +41,11 @@ function NewsList({ handlePageChange }) {
             <img src={article.urlToImage} alt={article.title} />
             <p>{article.description}</p>
           </Link>
+          <button onClick={() => handleFavoriteToggle(article)}>
+            {favoriteArticles.some((fav) => fav.url === article.url)
+              ? "Remove from Favorites"
+              : "Add to Favorites"}
+          </button>
         </div>
       ))}
       <div className="pagination">

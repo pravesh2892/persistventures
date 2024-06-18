@@ -10,10 +10,13 @@ import {
 import NewsList from "./Components/NewsList";
 import ArticleDetails from "./Components/ArticleDetails";
 import "./App.css";
+import Navbar from "./Components/Navbar";
+import FavoritesList from "./Components/FavoritesList";
 
 function App() {
   const dispatch = useDispatch();
   const { category, page, searchQuery } = useSelector((state) => state.news);
+  const { favoriteArticles } = useSelector((state) => state.favorites);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -38,43 +41,12 @@ function App() {
 
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-
-          <li>
-            <button onClick={() => handleCategoryChange("general")}>
-              General
-            </button>
-          </li>
-          <li>
-            <button onClick={() => handleCategoryChange("business")}>
-              Business
-            </button>
-          </li>
-          <li>
-            <button onClick={() => handleCategoryChange("technology")}>
-              Technology
-            </button>
-          </li>
-          <li>
-            <button onClick={() => handleCategoryChange("entertainment")}>
-              Entertainment
-            </button>
-          </li>
-          <li>
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchInput}
-              onChange={handleSearchChange}
-            />
-            <button onClick={handleSearch}>Search</button>
-          </li>
-        </ul>
-      </nav>
+      <Navbar
+        handleCategoryChange={handleCategoryChange}
+        handleSearchChange={handleSearchChange}
+        handleSearch={handleSearch}
+        searchInput={searchInput}
+      />
 
       <Routes>
         <Route
@@ -82,6 +54,24 @@ function App() {
           element={<NewsList handlePageChange={handlePageChange} />}
         />
         <Route path="/article/:id" element={<ArticleDetails />} />
+        <Route
+          path="/favorites"
+          element={
+            <div className="article-list">
+              <h1>Favorite Articles</h1>
+              {favoriteArticles.map((article) => (
+                <div className="article-item" key={article.url}>
+                  <Link to={`/article/${article.url}`}>
+                    <h2>{article.title}</h2>
+                    <img src={article.urlToImage} alt={article.title} />
+                    <p>{article.description}</p>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          }
+        />
+        <Route path="/favorites" element={<FavoritesList />} />
       </Routes>
     </div>
   );
