@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
+import { ReactComponent as Sun } from "../Assets/Sun.svg";
+import { ReactComponent as Moon } from "../Assets/Moon.svg";
 
 function Navbar({
   handleCategoryChange,
   handleSearchChange,
   handleSearch,
   searchInput,
+  darkMode,
+  onToggle,
 }) {
   return (
     <div className="nav-container">
@@ -49,7 +53,18 @@ function Navbar({
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-      <div className="dark-mode-toggle">Dark Mode</div>
+      <div className="dark_mode">
+        <input
+          className="dark_mode_input"
+          type="checkbox"
+          id="darkmode-toggle"
+          // checked={darkMode}
+          // onChange={onToggle}
+        />
+        <label className="dark_mode_label" htmlFor="darkmode-toggle">
+          {darkMode ? <Sun /> : <Moon />}
+        </label>
+      </div>
     </div>
   );
 }

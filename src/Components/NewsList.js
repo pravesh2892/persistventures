@@ -55,9 +55,7 @@ function NewsList({ handlePageChange }) {
         >
           Previous
         </button>
-        <span>
-          Page {page} of {totalPages}
-        </span>
+        <span>Page {page}</span>
         <button
           disabled={page === totalPages}
           onClick={() => handlePageChange(page + 1)}
