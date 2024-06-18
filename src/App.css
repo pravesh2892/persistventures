@@ -1,38 +1,162 @@
-.App {
-  text-align: center;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* General styles */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Navigation */
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
+  list-style-type: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul li {
+  margin: 0 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav ul li a,
+nav ul li button {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+nav ul li a:hover,
+nav ul li button:hover {
+  text-decoration: underline;
+}
+
+/* Loading and Error */
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* NewList */
+
+.article-list {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.article-list h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.article-item {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.article-item img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.article-item h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-item p {
+  margin-bottom: 1rem;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 1rem;
+  margin: 0 1rem;
+}
+ /* ArticalDetails */
+ 
+.article-details {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.article-details h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.article-details img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.article-details p {
+  margin-bottom: 1rem;
+}
+
+.article-details a {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  nav ul li {
+    margin: 0.5rem 0;
   }
 }
