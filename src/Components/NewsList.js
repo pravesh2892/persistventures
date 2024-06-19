@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite } from "../utils/favoritesSlice";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function NewsList({ handlePageChange }) {
   const { articles, page, totalResults, isLoading, error } = useSelector(
@@ -41,10 +42,19 @@ function NewsList({ handlePageChange }) {
             <img src={article.urlToImage} alt={article.title} />
             <p>{article.description}</p>
           </Link>
-          <button onClick={() => handleFavoriteToggle(article)}>
-            {favoriteArticles.some((fav) => fav.url === article.url)
-              ? "Remove from Favorites"
-              : "Add to Favorites"}
+          <button
+            className="favorite-btn"
+            onClick={() => handleFavoriteToggle(article)}
+          >
+            {favoriteArticles.some((fav) => fav.url === article.url) ? (
+              <>
+                <FaHeart /> Remove from Favorites
+              </>
+            ) : (
+              <>
+                <FaRegHeart /> Add to Favorites
+              </>
+            )}
           </button>
         </div>
       ))}

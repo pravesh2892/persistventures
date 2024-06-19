@@ -6,7 +6,6 @@
 }
 
 /* Dark mode styles */
-/* Dark mode styles */
 .dark-mode {
   background-color: #333;
   color: #fff;
@@ -29,13 +28,25 @@
   color: #fff;
 }
 
-/* Add more styles for other components in dark mode */
+.dark-mode .nav-menu ul li a,
+.dark-mode .nav-menu ul li button{
+  color: white;
+}
 
+.dark-mode .article-item a{
+  color: #ccc;
+}
+
+.dark-mode .pagination button{
+  background-color: #c4c4c4;
+  color: #151515;
+}
 
 
 /* Navigation */
 .nav-container{
 display: flex;
+
 flex-direction: row;
 align-items: center;
 
@@ -55,8 +66,7 @@ padding: 1rem;
 }
 .nav-menu{
   position: absolute;
-   
-    left: 112px;
+  left: 112px;
 }
 .nav-menu ul {
   list-style-type: none;
@@ -241,17 +251,29 @@ padding: 1rem;
   margin-bottom: 1rem;
 }
 
+.favorite-btn{
+  display: flex;
+    align-items: center;
+    height: 25px;
+    border: 1px solid rgb(53, 53, 53);
+    gap: 5px;
+    padding: 4px;
+    border-radius: 7px;
+}
+
 /* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .pagination button {
   background-color: #333;
   color: #fff;
   border: none;
+  border-radius: 7px;
   padding: 0.5rem 1rem;
   margin: 0 0.5rem;
   cursor: pointer;
