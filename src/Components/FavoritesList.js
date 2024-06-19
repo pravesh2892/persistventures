@@ -20,7 +20,10 @@ function FavoritesList() {
             <img src={article.urlToImage} alt={article.title} />
             <p>{article.description}</p>
 
-            <button onClick={() => handleRemoveFavorite(article)}>
+            <button
+              className="remove-btn"
+              onClick={() => handleRemoveFavorite(article)}
+            >
               Remove from Favorites
             </button>
           </div>
