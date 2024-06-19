@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite } from "../utils/favoritesSlice";
@@ -17,7 +17,7 @@ function NewsList({ handlePageChange }) {
     searchQuery,
   } = useSelector((state) => state.news);
   const { favoriteArticles } = useSelector((state) => state.favorites);
-
+  const [loadingPercentage, setLoadingPercentage] = useState(0);
   useEffect(() => {
     dispatch(fetchNews({ category, page, searchQuery }));
   }, [dispatch, category, page, searchQuery]);
@@ -34,9 +34,25 @@ function NewsList({ handlePageChange }) {
       dispatch(addFavorite(article));
     }
   };
+  useEffect(() => {
+    let interval;
+    if (isLoading) {
+      setLoadingPercentage(0);
+      interval = setInterval(() => {
+        setLoadingPercentage((prevPercentage) =>
+          prevPercentage >= 100 ? 0 : prevPercentage + 10
+        );
+      }, 300);
+    }
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   if (isLoading) {
-    return <div className="loading"></div>;
+    return (
+      <div className="loading">
+        <div className="loading-percentage">{loadingPercentage}%</div>
+      </div>
+    );
   }
 
   if (error) {
