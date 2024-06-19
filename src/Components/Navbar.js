@@ -50,8 +50,11 @@ function Navbar({
           placeholder="Search..."
           value={searchInput}
           onChange={handleSearchChange}
+          className="search-input"
         />
-        <button onClick={handleSearch}>Search</button>
+        <button onClick={handleSearch} className="search-btn">
+          Search
+        </button>
       </div>
       <div className="dark_mode">
         <input
