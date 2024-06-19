@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchNews,
@@ -16,7 +16,7 @@ import FavoritesList from "./Components/FavoritesList";
 function App() {
   const dispatch = useDispatch();
   const { category, page, searchQuery } = useSelector((state) => state.news);
-  const { favoriteArticles } = useSelector((state) => state.favorites);
+  const darkMode = useSelector((state) => state.theme.darkMode);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -30,7 +30,6 @@ function App() {
   const handlePageChange = (newPage) => {
     dispatch(setPage(newPage));
   };
-  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const handleSearchChange = (e) => {
     setSearchInput(e.target.value);
@@ -55,23 +54,6 @@ function App() {
           element={<NewsList handlePageChange={handlePageChange} />}
         />
         <Route path="/article/:id" element={<ArticleDetails />} />
-        <Route
-          path="/favorites"
-          element={
-            <div className="article-list">
-              <h1>Favorite Articles</h1>
-              {favoriteArticles.map((article) => (
-                <div className="article-item" key={article.url}>
-                  <Link to={`/article/${article.url}`}>
-                    <h2>{article.title}</h2>
-                    <img src={article.urlToImage} alt={article.title} />
-                    <p>{article.description}</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          }
-        />
         <Route path="/favorites" element={<FavoritesList />} />
       </Routes>
     </div>
