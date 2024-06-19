@@ -6,7 +6,7 @@
 }
 
 body {
-  padding-top: 4rem; /* Adjust the value based on the height of your Navbar */
+  padding-top: 4rem; 
 }
 /* Dark mode styles */
 .dark-mode {
@@ -49,13 +49,12 @@ body {
 /* Navigation */
 .nav-container{
 display: flex;
-
 flex-direction: row;
 align-items: center;
-position: fixed; /* Add this line */
-top: 0; /* Add this line */
-left: 0; /* Add this line */
-right: 0; /* Add this line */
+position: fixed; 
+top: 0; 
+left: 0; 
+right: 0; 
 z-index: 100;
 color: black;
 padding: 1rem;
@@ -103,7 +102,10 @@ background-color: white;
 .nav-menu ul li a:hover,
 .nav-menu ul li button:hover {
   text-decoration: underline;
+  text-decoration-color: #EF0107;
 }
+
+
 .nav-searchbar{
   display: flex;
   margin-left: 410px;
@@ -212,7 +214,32 @@ background-color: white;
 }
 
 /* Loading and Error */
-.loading,
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.loading::before {
+  content: "";
+  width: 70px;
+  height: 70px;
+  border: 5px solid #ccc;
+  border-top-color: #479bc2;
+  border-radius: 50%;
+  animation: loading-spin 1s linear infinite;
+}
+
+@keyframes loading-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .error {
   text-align: center;
   padding: 2rem;
