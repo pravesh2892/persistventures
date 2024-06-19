@@ -1,16 +1,26 @@
-// NewsList.js
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFavorite, removeFavorite } from "../utils/favoritesSlice";
+import { fetchNews, setPage } from "../utils/newsSlice";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function NewsList({ handlePageChange }) {
-  const { articles, page, totalResults, isLoading, error } = useSelector(
-    (state) => state.news
-  );
-  const { favoriteArticles } = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
+  const {
+    articles,
+    page,
+    totalResults,
+    isLoading,
+    error,
+    category,
+    searchQuery,
+  } = useSelector((state) => state.news);
+  const { favoriteArticles } = useSelector((state) => state.favorites);
+
+  useEffect(() => {
+    dispatch(fetchNews({ category, page, searchQuery }));
+  }, [dispatch, category, page, searchQuery]);
 
   const totalPages = Math.ceil(totalResults / 10);
 
@@ -62,14 +72,14 @@ function NewsList({ handlePageChange }) {
       <div className="pagination">
         <button
           disabled={page === 1}
-          onClick={() => handlePageChange(page - 1)}
+          onClick={() => dispatch(setPage(page - 1))}
         >
           Previous
         </button>
         <span>Page {page}</span>
         <button
           disabled={page === totalPages}
-          onClick={() => handlePageChange(page + 1)}
+          onClick={() => dispatch(setPage(page + 1))}
         >
           Next
         </button>

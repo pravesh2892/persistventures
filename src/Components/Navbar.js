@@ -5,6 +5,7 @@ import logo from "../Assets/logo.png";
 import { ReactComponent as Sun } from "../Assets/Sun.svg";
 import { ReactComponent as Moon } from "../Assets/Moon.svg";
 import { toggleDarkMode } from "../utils/themeSlice";
+import { setCategory, setSearchQuery, setPage } from "../utils/newsSlice";
 
 function Navbar({
   handleCategoryChange,
@@ -18,6 +19,13 @@ function Navbar({
   const handleToggleDarkMode = () => {
     dispatch(toggleDarkMode());
   };
+
+  const handleCategoryClick = (category) => {
+    dispatch(setCategory(category));
+    dispatch(setPage(1));
+    dispatch(setSearchQuery(""));
+  };
+
   return (
     <div className={`nav-container ${darkMode ? "dark-mode" : ""}`}>
       <div className="logo">
@@ -27,28 +35,28 @@ function Navbar({
         <ul>
           <li>
             <Link to="/">
-              <button onClick={() => handleCategoryChange("general")}>
+              <button onClick={() => handleCategoryClick("general")}>
                 General
               </button>
             </Link>
           </li>
           <li>
             <Link to="/">
-              <button onClick={() => handleCategoryChange("business")}>
+              <button onClick={() => handleCategoryClick("business")}>
                 Business
               </button>
             </Link>
           </li>
           <li>
             <Link to="/">
-              <button onClick={() => handleCategoryChange("technology")}>
+              <button onClick={() => handleCategoryClick("technology")}>
                 Technology
               </button>
             </Link>
           </li>
           <li>
             <Link to="/">
-              <button onClick={() => handleCategoryChange("entertainment")}>
+              <button onClick={() => handleCategoryClick("entertainment")}>
                 Entertainment
               </button>
             </Link>
