@@ -30,6 +30,7 @@ function App() {
   const handlePageChange = (newPage) => {
     dispatch(setPage(newPage));
   };
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
   const handleSearchChange = (e) => {
     setSearchInput(e.target.value);
@@ -40,7 +41,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={`app ${darkMode ? "dark-mode" : ""}`}>
       <Navbar
         handleCategoryChange={handleCategoryChange}
         handleSearchChange={handleSearchChange}

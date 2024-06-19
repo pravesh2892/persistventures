@@ -1,43 +1,57 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
 import { ReactComponent as Sun } from "../Assets/Sun.svg";
 import { ReactComponent as Moon } from "../Assets/Moon.svg";
+import { toggleDarkMode } from "../utils/themeSlice";
 
 function Navbar({
   handleCategoryChange,
   handleSearchChange,
   handleSearch,
   searchInput,
-  darkMode,
-  onToggle,
 }) {
+  const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.theme.darkMode);
+
+  const handleToggleDarkMode = () => {
+    dispatch(toggleDarkMode());
+  };
   return (
-    <div className="nav-container">
+    <div className={`nav-container ${darkMode ? "dark-mode" : ""}`}>
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
       <div className="nav-menu">
         <ul>
           <li>
-            <button onClick={() => handleCategoryChange("general")}>
-              General
-            </button>
+            <Link to="/">
+              <button onClick={() => handleCategoryChange("general")}>
+                General
+              </button>
+            </Link>
           </li>
           <li>
-            <button onClick={() => handleCategoryChange("business")}>
-              Business
-            </button>
+            <Link to="/">
+              <button onClick={() => handleCategoryChange("business")}>
+                Business
+              </button>
+            </Link>
           </li>
           <li>
-            <button onClick={() => handleCategoryChange("technology")}>
-              Technology
-            </button>
+            <Link to="/">
+              <button onClick={() => handleCategoryChange("technology")}>
+                Technology
+              </button>
+            </Link>
           </li>
           <li>
-            <button onClick={() => handleCategoryChange("entertainment")}>
-              Entertainment
-            </button>
+            <Link to="/">
+              <button onClick={() => handleCategoryChange("entertainment")}>
+                Entertainment
+              </button>
+            </Link>
           </li>
           <li>
             <Link to="/favorites">Favorites</Link>
@@ -61,8 +75,8 @@ function Navbar({
           className="dark_mode_input"
           type="checkbox"
           id="darkmode-toggle"
-          // checked={darkMode}
-          // onChange={onToggle}
+          checked={darkMode}
+          onChange={handleToggleDarkMode}
         />
         <label className="dark_mode_label" htmlFor="darkmode-toggle">
           {darkMode ? <Sun /> : <Moon />}

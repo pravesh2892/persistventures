@@ -5,11 +5,33 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
+/* Dark mode styles */
+/* Dark mode styles */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
 }
+
+.dark-mode .nav-container {
+  background-color: #222;
+  color: #fff;
+}
+
+.dark-mode .article-item,
+.dark-mode .favorite-item {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode .search-input,
+.dark-mode .search-btn {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Add more styles for other components in dark mode */
+
+
 
 /* Navigation */
 .nav-container{
