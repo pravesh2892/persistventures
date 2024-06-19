@@ -1,40 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function ArticleDetails() {
   const { id } = useParams();
-  const [article, setArticle] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { articles } = useSelector((state) => state.news);
 
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const response = await fetch(
-          `https://newsapi.org/v2/everything?domains=${id}&apiKey=YOUR_API_KEY`
-        );
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error("Failed to fetch article details");
-        }
-        setArticle(data.articles[0]);
-        setIsLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setIsLoading(false);
-      }
-    };
-
-    fetchArticle();
-  }, [id]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const article = articles.find(
+    (item) => item.title.replace(/\s/g, "-") === id
+  );
 
   if (!article) {
     return <div>No article found</div>;

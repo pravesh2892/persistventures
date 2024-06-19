@@ -1,7 +1,8 @@
+// FavoritesList.js
 import React from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { removeFavorite } from "../utils/favoritesSlice";
+import { Link } from "react-router-dom";
 
 function FavoritesList({ favoriteArticles }) {
   const dispatch = useDispatch();
@@ -10,23 +11,30 @@ function FavoritesList({ favoriteArticles }) {
     dispatch(removeFavorite(article.url));
   };
 
+  const getUrlForArticle = (url) => {
+    // Remove the protocol and domain from the URL
+    const cleanUrl = url.replace(/^.*?\/\/[^/]*\//, "");
+    return cleanUrl.replace(/\//g, "-");
+  };
+
   return (
-    <div className="favorite-list">
-      <h1>Favorite Articles</h1>
-      {favoriteArticles.map((article) => (
-        <div className="favorite-item" key={article.url}>
-          <div className="favorite-content">
-            <Link to={`/article/${article.url}`}>
-              <h2>{article.title}</h2>
-              <img src={article.urlToImage} alt={article.title} />
+    <div>
+      <h2>Favorite Articles</h2>
+      {favoriteArticles.length > 0 ? (
+        favoriteArticles.map((article) => (
+          <div key={article.url}>
+            <Link to={`/article/${getUrlForArticle(article.url)}`}>
+              <h3>{article.title}</h3>
               <p>{article.description}</p>
             </Link>
+            <button onClick={() => handleRemoveFavorite(article)}>
+              Remove from Favorites
+            </button>
           </div>
-          <button onClick={() => handleRemoveFavorite(article)}>
-            Remove from Favorites
-          </button>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>No favorite articles found.</p>
+      )}
     </div>
   );
 }

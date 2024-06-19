@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+body {
+  padding-top: 4rem; /* Adjust the value based on the height of your Navbar */
+}
 /* Dark mode styles */
 .dark-mode {
   background-color: #333;
@@ -12,7 +15,7 @@
 }
 
 .dark-mode .nav-container {
-  background-color: #222;
+  background-color: #333;
   color: #fff;
 }
 
@@ -49,9 +52,14 @@ display: flex;
 
 flex-direction: row;
 align-items: center;
-
+position: fixed; /* Add this line */
+top: 0; /* Add this line */
+left: 0; /* Add this line */
+right: 0; /* Add this line */
+z-index: 100;
 color: black;
 padding: 1rem;
+background-color: white;
 
 }
 
@@ -292,6 +300,7 @@ padding: 1rem;
  
 .article-details {
   max-width: 800px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 2rem auto;
   padding: 0 1rem;
 }

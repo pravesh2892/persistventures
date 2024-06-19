@@ -1,3 +1,4 @@
+// NewsList.js
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -37,7 +38,7 @@ function NewsList({ handlePageChange }) {
       <h1>News Articles</h1>
       {articles.map((article) => (
         <div className="article-item" key={article.url}>
-          <Link to={`/article/${article.url}`}>
+          <Link to={`/article/${article.title.replace(/\s/g, "-")}`}>
             <h2>{article.title}</h2>
             <img src={article.urlToImage} alt={article.title} />
             <p>{article.description}</p>
