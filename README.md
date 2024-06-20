@@ -13,15 +13,13 @@ The React News Portal is a responsive web application built with React.js that a
  ![image](https://github.com/pravesh2892/persistventures/assets/112716122/da3e0538-690c-4511-ba9f-6477ff2dc50c)
 
 - **Pagination**: Navigation through multiple pages of articles using pagination controls.
-  ![image](https://github.com/pravesh2892/persistventures/assets/112716122/3f588c84-c1cf-4431-b09e-224247debf37)
-
 - **Detailed Article View**: Clicking on an article summary opens a detailed view with the full article content and any associated media.
   ![image](https://github.com/pravesh2892/persistventures/assets/112716122/08cb33a2-b315-4daa-be3b-473edba1d6d6)
 
 - **Search Functionality**: Users can search for articles by keywords.
 - **Favorites Management**: Users can add articles to their favorites list, which persists between sessions using local storage.
 - **Dark Mode Toggle**: Users can switch between light and dark mode.
-  ![image](https://github.com/pravesh2892/persistventures/assets/112716122/092ff548-fdb7-4263-aa33-1ecd4ea99583)
+ 
 
 
 ## Technologies Used
