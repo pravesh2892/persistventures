@@ -1,11 +1,15 @@
 # React News Portal
+![image](https://github.com/pravesh2892/persistventures/assets/112716122/3ff8f8b3-847f-486f-bb1a-b0fdae2b8846)
+![image](https://github.com/pravesh2892/persistventures/assets/112716122/10f26687-a8a6-44a6-b870-01611f5aaf03)
+
+## Overview
 
 The React News Portal is a responsive web application built with React.js that allows users to browse and read news articles from various categories. It fetches news data from a public API and provides features like category filtering, pagination, search functionality, favorites management, and a dark mode toggle.
 
 ## Features
 
 - **News Article List**: Displays a list of news articles with titles, images, and summaries.
-- **Category Filtering**: Users can filter articles by selecting different categories a set of buttons.
+- **Category Filtering**: Users can filter articles by selecting different categories like -General, Business, Technology, Entertainment,Favorites .
 - **Pagination**: Navigation through multiple pages of articles using pagination controls.
 - **Detailed Article View**: Clicking on an article summary opens a detailed view with the full article content and any associated media.
 - **Search Functionality**: Users can search for articles by keywords.
