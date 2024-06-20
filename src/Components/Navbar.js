@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../Assets/logo.png";
@@ -7,14 +7,10 @@ import { ReactComponent as Moon } from "../Assets/Moon.svg";
 import { toggleDarkMode } from "../utils/themeSlice";
 import { setCategory, setSearchQuery, setPage } from "../utils/newsSlice";
 
-function Navbar({
-  handleCategoryChange,
-  handleSearchChange,
-  handleSearch,
-  searchInput,
-}) {
+function Navbar({ handleSearchChange, handleSearch, searchInput }) {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.theme.darkMode);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleDarkMode = () => {
     dispatch(toggleDarkMode());
@@ -24,6 +20,11 @@ function Navbar({
     dispatch(setCategory(category));
     dispatch(setPage(1));
     dispatch(setSearchQuery(""));
+    setIsMenuOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -31,7 +32,10 @@ function Navbar({
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
-      <div className="nav-menu">
+      <div className="hamburger-menu" onClick={toggleMenu}>
+        ☰
+      </div>
+      <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
             <Link to="/">
@@ -87,7 +91,7 @@ function Navbar({
           onChange={handleToggleDarkMode}
         />
         <label className="dark_mode_label" htmlFor="darkmode-toggle">
-          {darkMode ? <Sun /> : <Moon />}
+          {darkMode ? <Sun className="sun" /> : <Moon className="moon" />}
         </label>
       </div>
     </div>

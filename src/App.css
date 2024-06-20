@@ -55,34 +55,34 @@ body {
 }
 
 /* Navbar */
-.nav-container{
-display: flex;
-flex-direction: row;
-align-items: center;
-position: fixed; 
-top: 0; 
-left: 0; 
-right: 0; 
-z-index: 100;
-color: black;
-padding: 1rem;
-background-color: white;
-
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: black;
+  padding: 1rem;
+  background-color: white;
 }
 
-.logo{
-
+.logo {
   padding-right: 0;
   margin-right: 0;
 }
-.logo img{
- width: 24%;
 
+.logo img {
+  width: 24%;
 }
-.nav-menu{
+
+.nav-menu {
   position: absolute;
   left: 112px;
 }
+
 .nav-menu ul {
   list-style-type: none;
   display: flex;
@@ -91,7 +91,7 @@ background-color: white;
 }
 
 .nav-menu ul li {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
 }
 
 .nav-menu ul li a,
@@ -111,17 +111,16 @@ background-color: white;
 .nav-menu ul li button:hover {
   text-decoration: underline;
   text-decoration-thickness: 3px;
-  text-decoration-color: #EF0107;
+  text-decoration-color: #ef0107;
 }
 
-
-.nav-searchbar{
+.nav-searchbar {
   display: flex;
   margin-left: 410px;
   gap: 3px;
 }
 
-.nav-searchbar .search-input{
+.nav-searchbar .search-input {
   background-color: #d3d3d3;
   border-radius: 10px;
   border: transparent;
@@ -130,13 +129,13 @@ background-color: white;
   padding: 5px;
 }
 
-.search-btn{
+.search-btn {
   background-color: #d3d3d3;
   border-radius: 10px;
   width: 52px;
   height: 25px;
   border: transparent;
- cursor: pointer;
+  cursor: pointer;
 }
 
 .dark-mode-toggle button {
@@ -153,6 +152,7 @@ background-color: white;
 .dark-mode-toggle button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
 .dark_mode {
   margin-top: -20px;
   margin-left: 110px;
@@ -165,13 +165,13 @@ background-color: white;
   display: block;
   background: #ebebeb;
   border-radius: 200px;
-  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4),
-      inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: 0.3s;
 }
+
 .dark_mode_label:after {
-  content: "";
+  content: '';
   width: 25px;
   height: 25px;
   position: absolute;
@@ -182,19 +182,23 @@ background-color: white;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 }
+
 .dark_mode_input {
   width: 0;
   height: 0;
   visibility: hidden;
 }
+
 .dark_mode_input:checked + .dark_mode_label {
   background: #242424;
 }
+
 .dark_mode_input:checked + .dark_mode_label:after {
   left: 62px;
   transform: translateX(-100%);
   background: linear-gradient(180deg, #777, #3a3a3a);
 }
+
 .dark_mode_label:active:after {
   width: 30px;
 }
@@ -205,22 +209,31 @@ background-color: white;
   top: 5px;
   z-index: 100;
 }
+
 .dark_mode_label svg.sun {
   left: 5px;
   fill: #fff;
   transition: 0.3s;
 }
+
 .dark_mode_label svg.moon {
   left: 40px;
   fill: #a4a4a4;
   transition: 0.3s;
 }
+
 .dark_mode_input:checked + .dark_mode_label svg.sun {
   fill: white;
 }
+
 .dark_mode_input:checked + .dark_mode_label svg.moon {
   fill: #fff;
 }
+
+.hamburger-menu{
+  display: none;
+}
+
 
 
 /* Loading and Error */
@@ -482,15 +495,75 @@ margin-bottom: 0.5rem;
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  body {
+    padding-top: 2rem; 
+  }
+  .nav-container {
+    flex-direction: row;
+  
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: white; 
+    padding: 1rem 0; 
+    position: absolute; 
+    top: 60px; 
+    left: 0;
+  }
+ .dark-mode ,.nav-menu{
+  background-color: #333;
+  color: #fff;
+ }
   .nav-menu ul {
     flex-direction: column;
-    align-items: center;
+    gap: 10px;
   }
 
-  .nav-menu ul li {
-    margin: 0.5rem 0;
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
   }
 
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-searchbar {
+    margin-left: 21px;
+    width: 100%;
+  }
+
+  .nav-searchbar .search-input {
+    width: calc(100% - 60px);
+    max-width: 150px; 
+  }
+ .logo{
+  margin-left: 10px;
+ }
+  .dark_mode {
+   margin-right: 10px;
+    margin-left: auto;
+  }
+  .dark_mode_label:after{
+    width: 21px;
+    height: 21px;
+  }
+  .dark_mode_label{
+    height: 27px;
+  }
+  .hamburger-menu{
+   
+    margin-left: -62px;
+  }
+  .logo img{
+    width: 33%;
+  }
   .pagination{
     margin-top: 1rem;
     margin-bottom: 1rem;
