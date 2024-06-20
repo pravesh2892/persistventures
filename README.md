@@ -19,6 +19,10 @@ The React News Portal is a responsive web application built with React.js that a
 - **Search Functionality**: Users can search for articles by keywords.
 - **Favorites Management**: Users can add articles to their favorites list, which persists between sessions using local storage.
 - **Dark Mode Toggle**: Users can switch between light and dark mode.
+- **Loading and Error**: This application handles loading states and errors during API calls.
+  ![image](https://github.com/pravesh2892/persistventures/assets/112716122/596d72a1-fd1f-4e97-98b3-971e09a30556)
+
+  
  
 
 
