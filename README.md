@@ -10,7 +10,7 @@ The React News Portal is a responsive web application built with React.js that a
 
 - **News Article List**: Displays a list of news articles with titles, images, and summaries.
 - **Category Filtering**: Users can filter articles by selecting different categories like -General, Business, Technology, Entertainment,Favorites .
-- ![image](https://github.com/pravesh2892/persistventures/assets/112716122/da3e0538-690c-4511-ba9f-6477ff2dc50c)
+ ![image](https://github.com/pravesh2892/persistventures/assets/112716122/da3e0538-690c-4511-ba9f-6477ff2dc50c)
 
 - **Pagination**: Navigation through multiple pages of articles using pagination controls.
 - **Detailed Article View**: Clicking on an article summary opens a detailed view with the full article content and any associated media.
