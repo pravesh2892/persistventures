@@ -26,8 +26,13 @@ The React News Portal is a responsive web application built with React.js that a
 - CSS/CSS  (for styling)
 - Local Storage (for storing favorites)
 
-## Getting Started
-
+## Project Structure
+- `src/components`: React components (Navbar.js, ArticleDetails.js, FavoritesList.js, Logo.js, NewsList.js).
+- `src/utils`: Redux files(store.js, newsSlice.js, favoritesSlice.js, themeSlice.js).
+- `src/Assets`: Store required images.
+- `src/App.js`: Main application component.
+- `src/App.css`: CSS module  for styling components.
+  
 ### Prerequisites
 
 - Node.js and npm installed on your machine
